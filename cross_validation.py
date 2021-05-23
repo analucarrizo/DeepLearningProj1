@@ -10,6 +10,7 @@ from torch.optim import SGD
 import dlc_practical_prologue as prologue
 # from plot import getMetrics, stats, plot_losses
 from train import train_model_auxloss, train_model 
+from helper_functions import normalize,computeAccuracy
 from models import noWeightsharingnoAuxloss, weightsharingnoAuxloss, noWeightsharingAuxloss, weightsharingAuxloss, final_model, normalize
 
 
@@ -89,29 +90,13 @@ def crossValidation(dictionary,aux_loss):
     return best_param
 
 
-# In[10]:
 
 
-def computeAccuracy(model,input,target,aux_loss):
-    model.eval()
-    #pred = model(normalize(input)).argmax(dim = 1)
-    if aux_loss:
-        _,_,pred = model(input)
-    else:
-        pred = model(input)
-        pred = pred.argmax(dim = 1)
-        actual = target
-        model.train()
-    return (pred[pred == actual].shape[0]/pred.shape[0])
-
-
-# In[ ]:
-
-
-hyperParam = dict()
-hyperParam["lr"] = [0.1,0.01,0.001,0.0001]
-hyperParam["batch_size"] = [16,32,50]#[5,8,10]
-hyperParam["momentum"] = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
-hyperParam["epochs"] = [25]
-best_hyp_param = crossValidation(hyperParam,aux_loss = False)
+###hyper param that were used for cross validation##
+#hyperParam = dict()
+#hyperParam["lr"] = [0.1,0.01,0.001,0.0001]
+#hyperParam["batch_size"] = [16,32,50]#[5,8,10]
+#hyperParam["momentum"] = [0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]
+#hyperParam["epochs"] = [25]
+#best_hyp_param = crossValidation(hyperParam,aux_loss = False)
 

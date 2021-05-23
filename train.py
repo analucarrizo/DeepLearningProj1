@@ -7,6 +7,7 @@
 import torch
 from torch.optim import SGD
 from torch import nn
+
 # from models import noWeightsharingnoAuxloss, 
 
 
@@ -54,7 +55,7 @@ def train_model_auxloss(model,train_input,train_target,train_classes,optimizer,c
                 validation_acc.append(pred_test[pred_test == test_target].shape[0]/pred_test.shape[0])
                 model.train()
                 model.zero_grad()
-                #print(e, acc_loss/batches)
+                print(e, acc_loss/batches)
 
     return train_loss,validation_loss,train_acc,validation_acc
 
@@ -98,19 +99,8 @@ def train_model(model,train_input,train_target,optimizer,criterion,test_input,te
                 validation_acc.append(pred_test[pred_test == test_target].shape[0]/pred_test.shape[0])
                 model.train()
                 model.zero_grad()
-                #print(e, acc_loss/batches)
+                print(e, acc_loss/batches)
     return train_loss,validation_loss,train_acc,validation_acc
 
-#train_input,train_target,train_classes,test_input,test_target,test_classes = prologue.generate_pair_sets(1000)
-#train_input_norm = normalize(train_input).to(device)
-#train_target = train_target.to(device)
-#test_input = test_input.to(device)
-#test_target = test_target.to(device)
-#model = other_type().to(device)
-#preproccessing =  transforms.Compose([transforms.RandomRotation(20,resample = False, center = None,fill = None)])
-##model = model_template()
-#criterion = nn.CrossEntropyLoss()
-#optimizer = torch.optim.SGD(model.parameters(), lr=0.1,momentum=0.9,nesterov=True)
-#train_loss,validation_loss = train_model(model,train_input_norm,train_target,optimizer,criterion,mini_batch_size = 100,nb_epochs = 100,preprocessing = preproccessing,print_progress= True)
-#model.eval()
+
 
