@@ -3,15 +3,20 @@
 
 # In[2]:
 
-
+#function used to normalize data
 def normalize(data):
     mean = data.mean()
     std = data.std()
     return (data-mean)/std
 
+#computes accuracy of a model
+#input: model: model we are evaluating on
+    #  inp: input data
+    #  target: expected target
+    #  aux_loss: Boolean specifying if model uses aux loss or not
+#returns accuracy
 def computeAccuracy(model,inp,target,aux_loss):
     model.eval()
-    #pred = model(normalize(input)).argmax(dim = 1)
     if aux_loss:
         _,_,pred = model(inp)
     else:
@@ -22,7 +27,7 @@ def computeAccuracy(model,inp,target,aux_loss):
     return (pred[pred == actual].shape[0]/pred.shape[0])
 
 
-# In[ ]:
+
 
 
 

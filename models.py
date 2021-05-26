@@ -13,7 +13,7 @@ import dlc_practical_prologue as prologue
 
 
 #########################################################################
-#                     NO WEIGHT SHARING AND NO AUXILIARY LOSS
+#                     NO WEIGHT SHARING AND NO AUXILIARY LOSS MODEL
 #########################################################################
 class noWeightsharingnoAuxloss(nn.Module):
     def __init__(self):
@@ -56,7 +56,7 @@ class noWeightsharingnoAuxloss(nn.Module):
 
 
 #########################################################################
-#                     WEIGHT SHARING AND NO AUXILIARY LOSS
+#                     WEIGHT SHARING AND NO AUXILIARY LOSS MODEL
 #########################################################################
 
 class weightsharingnoAuxloss(nn.Module):
@@ -89,7 +89,7 @@ class weightsharingnoAuxloss(nn.Module):
 
 
 #########################################################################
-#                     NO WEIGHT SHARING AND AUXILIARY LOSS
+#                     NO WEIGHT SHARING AND AUXILIARY LOSS MODEL
 #########################################################################
 
 class noWeightsharingAuxloss(nn.Module):
@@ -136,7 +136,7 @@ class noWeightsharingAuxloss(nn.Module):
 
 
 #########################################################################
-#                      WEIGHT SHARING AND AUXILIARY LOSS
+#                      WEIGHT SHARING AND AUXILIARY LOSS MODEL
 #########################################################################
 
 class weightsharingAuxloss(nn.Module):
@@ -170,6 +170,10 @@ class weightsharingAuxloss(nn.Module):
 
         return digitResa,digitResb,self.transf(torch.cat((xa,xb),dim = 1))
 
+    
+ #########################################################################
+#                     FINAL MODEL additional hidden layer
+#########################################################################
 
 
 class final_model(nn.Module):
